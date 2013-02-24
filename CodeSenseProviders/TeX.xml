@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<codesense>
+	
+	<provider>
+	    <selector>language-root.tex, language-root.tex *</selector>
+	    <completions>com.tex.Character</completions>
+	    <completions>com.tex.Hyphenation</completions>
+	    <completions>com.tex.Fonts</completions>
+	    <completions>com.tex.Math</completions>
+	    <completions>com.tex.Glue</completions>
+	    <completions>com.tex.Paragraph</completions>
+	    <completions>com.tex.Registers</completions>
+	    <completions>com.tex.Macro</completions>
+	    <completions>com.tex.Box</completions>
+	    <completions>com.tex.Debugging</completions>
+	    <completions>com.tex.Penalties</completions>
+	    <completions>com.tex.Marks</completions>
+	    <completions>com.tex.FileIO</completions>
+	    <completions>com.tex.Tables</completions>
+	    <completions>com.tex.Job</completions>
+	    <completions>com.tex.Logic</completions>
+	    <completions>com.tex.Page</completions>
+	    <completions>com.tex.Inserts</completions>
+	    <completions>com.tex.Kern</completions>
+	    <complete-match capture="1">\\([a-zA-Z\\]*)</complete-match>
+	</provider>
+		
+</codesense> 

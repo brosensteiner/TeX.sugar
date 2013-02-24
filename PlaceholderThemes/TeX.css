@@ -1,0 +1,10 @@
+/*
+    @theme TeX Placeholder
+    @placeholder language-root.TeX
+    @author Bernhard Rosensteiner <brosensteiner@gmail.com>
+*/
+
+:not(tex.comment) {
+	spell-check: disabled;
+}
+

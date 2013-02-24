@@ -1,0 +1,227 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<syntax name="language-root.tex">
+
+    <zones>
+    	<!--special syntax highlighting:-->
+    	<include collection="TeXDefine" />
+    	<include collection="If_Else" />
+    	<include collection="Unit" />
+    	<include collection="SpecialKeywordsTeX" />
+    	<include collection="Comment" />
+       	
+    	<zone name="tex.command.Registers">
+    	    <expression>\\(advance|divide|multiply)(\b|(?=\d))</expression>
+    	</zone>
+    	
+    	<zone name="tex.command.Box.special-box">
+    	    <expression>\\\w*box(\b|(?=\d))</expression>
+    	</zone>
+    	
+    	<zone name="tex.command.Box.special-rule">
+    		<expression>\\\w*rule(\b|(?=\d))</expression>
+    	</zone>
+    	
+    	<zone name="tex.command.Kern.special-kern">
+    		<expression>\\\w*kern(\b|(?=\d))</expression>
+    	</zone>
+    	
+       	<!--normal TeX commands-->
+    	<zone name="tex.command.Inserts">
+    	    <expression>\\(holdinginserts|insert|insertpenalties|interlinepenalty|splitbotmark|splitfirstmark|splitmaxdepth|splittopskip|vsplit)(\b|(?=\d))</expression>
+    	</zone>
+    	
+    	<zone name="tex.command.Box">
+    	    <expression>\\(badness|box|boxmaxdepth|brokenpenalty|cleaders|copy|dp|exhyphenpenalty|hbadness|hfuzz|ht|leaders|prevdepth|unhcopy|unvcopy|vbadness|vcenter|vfuzz|vtop|wd|widowpenalty|xleaders)(\b|(?=\d))</expression>
+    	</zone>
+    	
+    	<zone name="tex.command.Fonts">
+    	    <expression>\\(/|fam|font|fontdimen|fontname|nullfont|scriptfont|scriptscriptfont|textfont)(\b|(?=\d))</expression>
+    	</zone>
+    	
+    	<zone name="tex.command.Math">
+    	    <expression>\\(above|abovewithdelims|atop|atopwithdelims|delimiterfactor|delimitershortfall|displaylimits|displaystyle|eqno|everydisplay|everymath|left|leqno|limits|linepenalty|mathbin|mathchoice|mathclose|mathinner|mathop|mathopen|mathord|mathpunct|mathrel|nolimits|nonscript|over|overline|overwithdelims|radical|right|scriptscriptstyle|scriptstyle|textstyle|underline)(\b|(?=\d))</expression>
+    	</zone>
+    	
+    	<zone name="tex.command.Job">
+    	    <expression>\\(day|deadcycles|dump|end|everyjob|jobname|mag|maxdeadcycles|month|time|year)(\b|(?=\d))</expression>
+    	</zone>
+    	
+    	<zone name="tex.command.Tables">
+    	    <expression>\\(cr|crcr|everycr|halign|noalign|omit|span|tabskip|valign)(\b|(?=\d))</expression>
+    	</zone>
+    	
+    	<zone name="tex.command.Debugging">
+    	    <expression>\\(batchmode|errhelp|errmessage|errortex.ines|errorstopmode|meaning|message|nonstopmode|pausing|penalty|scrollmode|show|showbox|showboxbreadth|showboxdepth|showlists|showthe|tracingcommands|tracinglostchars|tracingmacros|tracingonline|tracingoutput|tracingpages|tracingparagraphs|tracingrestores|tracingstats)(\b|(?=\d))</expression>
+    	</zone>
+    	
+    	<zone name="tex.command.Page">
+    	    <expression>\\(hoffset|maxdepth|pagedepth|pagefilllstretch|pagefillstretch|pagefilstretch|pagegoal|pageshrink|pagestretch|pagetotal|topskip|voffset|vsize)(\b|(?=\d))</expression>
+    	</zone>
+    	
+    	<zone name="tex.command.Paragraph">
+    	    <expression>\\(adjdemerits|baselineskip|displayindent|displaywidth|doublehyphendemerits|emergencystretch|everypar|finalhyphendemerits|hangafter|hangindent|hsize|ignorespaces|indent|leftskip|lineskip|lineskiplimit|looseness|noboundary|noindent|par|parfillskip|parindent|parshape|parskip|predisplaysize|pretolerance|prevgraf|rightskip|spacefactor|spaceskip|tolerance|vadjust|xspaceskip)(\b|(?=\d))</expression>
+    	</zone>
+    	
+    	<zone name="tex.command.Hyphenation">
+    	    <expression>\\(-|defaulthyphenchar|discretionary|hyphenation|hyphenchar|hyphenpenalty|language|lefthyphenmin|patterns|righthyphenmin|setlanguage|uchyph)(\b|(?=\d))</expression>
+    	</zone>
+    	
+    	<zone name="tex.command.Kern">
+    	    <expression>\\(lastkern|lastpenalty|lower|mathsurround|mkern|moveleft|moveright|nulldelimiterspace|raise|scriptspace|unkern|unpenalty)(\b|(?=\d))</expression>
+    	</zone>
+    	
+    	<zone name="tex.command.Registers">
+    	    <expression>\\(advance|count|countdef|dimen|dimendef|divide|multiply|muskip|muskipdef|skip|skipdef|toks|toksdef)(\b|(?=\d))</expression>
+    	</zone>
+    	
+    	<zone name="tex.command.Macro">
+    	    <expression>\\(afterassignment|aftergroup|begingroup|csname|endcsname|endgroup|expandafter|global|globaldefs|long|noexpand|outer|relax|the|def|xdef|gdef|edef)(\b|(?=\d))</expression>
+    	</zone>
+    	
+    	<zone name="tex.command.Character">
+    	    <expression>\\(\\|accent|catcode|char|chardef|defaultskewchar|delcode|delimiter|endlinechar|escapechar|lccode|lowercase|mathaccent|mathchar|mathchardef|mathcode|newlinechar|number|romannumeral|sfcode|skewchar|string|uccode|uppercase)(\b|(?=\d))</expression>
+    	</zone>
+    	
+    	<zone name="tex.command.Glue">
+    	    <expression>\\(abovedisplayshortskip|abovedisplayskip|belowdisplayshortskip|belowdisplayskip|hfil|hfill|hfilneg|hskip|hss|lastskip|medmuskip|mskip|thickmuskip|thinmuskip|unskip|vfil|vfill|vfilneg|vskip|vss)(\b|(?=\d))</expression>
+    	</zone>
+    	
+    	<zone name="tex.command.Penalties">
+    	    <expression>\\(binoppenalty|displaywidowpenalty|postdisplaypenalty|predisplaypenalty|relpenalty)(\b|(?=\d))</expression>
+    	</zone>
+    	
+    	<zone name="tex.command.Logic">
+    	    <expression>\\(else|fi|if|ifcase|ifcat|ifdim|ifeof|iffalse|ifhbox|ifhmode|ifinner|ifmmode|ifnum|ifodd|iftrue|ifvbox|ifvmode|ifvoid|ifx|or)(\b|(?=\d))</expression>
+    	</zone>
+    	
+    	<zone name="tex.command.Marks">
+    	    <expression>\\(botmark|firstmark|floatingpenalty|mark|topmark)(\b|(?=\d))</expression>
+    	</zone>
+    	
+    	<zone name="tex.command.FileIO">
+    	    <expression>\\(closein|closeout|clubpenalty|endinput|immediate|input|inputlineno|openin|openout|output|outputpenalty|read|shipout|special|write)(\b|(?=\d))</expression>
+    	</zone>
+    	
+        <zone name="tex.constant.numeric">
+            <expression>(([0-9]*[\.][0-9]+)|[0-9]+)</expression>
+        </zone>
+
+    </zones>
+    
+    <library>
+    
+    	<collection name="TeXDefine">
+    		
+    		<zone name="tex.command.function.define">
+    			<starts-with>
+    				<expression>(\\(?:g|e|x)?def)\s*(\\[A-Za-z@!?:_]*[A-Za-z@!?:_;,\.])\s*((?:\#{1,9}[A-Za-z_@!?:1-9]+)+)?\s*(\{)</expression>
+    				<capture number="1" name="tex.command.general.Macro.def"/>
+    				<capture number="2" name="tex.command.name"/>
+    				<capture number="3" name="tex.support.variable.define"/>
+    				<capture number="4" name="tex.open-bracket.level0"/>
+    			</starts-with>
+    			<ends-with>
+    				<expression>\}</expression>
+    				<capture number="0" name="tex.close-bracket.level0"/>
+    			</ends-with>
+    			<subzones name="tex.command-name.subzone">
+    			    <include syntax="language-root.tex"/>
+    			</subzones>
+    		</zone>
+    		
+    		<zone name="tex.command.function.define">
+    			<expression>(\\(?:g|e|x)?def)\s*(\\[A-Za-z@!?:_]*[A-Za-z@!?:_;,\.])</expression>
+    			<capture number="1" name="tex.command.general.def"/>
+    			<capture number="2" name="tex.command.name"/>
+    		</zone>
+    		
+    		<zone name="tex.command.function.let">
+    		    <expression>\\(?:future)?let\b\s*(\\[A-Za-z@!?:_]*[A-Za-z@!?:_;,\.])?</expression>
+    		    <capture number="1" name="tex.command.Macro"/>
+    		</zone>
+    		
+    		<zone name="tex.support.variable.define">
+    		    <expression>\#{1,9}[A-Za-z_@!?:1-9]+</expression>
+    		</zone>
+    	
+    	</collection>
+    	
+    	<collection name="If_Else">
+    		<zone name="tex.keyword.control.if">
+    		    <expression>\\if[A-Za-z@!?:_]*(\b|(?=\d))</expression>
+    		</zone>
+    	    <zone name="tex.keyword.control">
+    	        <expression>(\\fi|\\else|\\or)(\b|(?=\d))</expression>
+    	    </zone>
+    	</collection>
+    	
+    	<collection name="SpecialKeywordsTeX">
+    		
+    		<zone name="tex.keyword-zone.to-spread-keyword">
+    		    <expression>(to|spread)\s*(?:((?:\+|\-)?[0-9]*(\.|,)?[0-9]+)\s*(fi(?:lll|ll|l)|(?:\s*(true)?\s*(mu|cm|mm|in|pt|bp|em|ex|pc|sp|cc|dd)))|((\\[A-Za-z@!?:_]*[A-Za-z@!?:_]\s*)+)(?=\\fi))</expression>
+    		    <capture number="1" name="tex.keyword.to-spread-keyword"/>
+    		    <capture number="2" name="tex.numeric"/>
+    		    <capture number="3" name="tex.punctuation.delimiter.point"/>
+    		    <capture number="4" name="tex.keyword.other.fillls"/>
+    		    <capture number="5" name="tex.keyword.other.true"/>
+    		    <capture number="6" name="tex.keyword.unit"/>
+    		    <capture number="7" name="tex.command.general"/>
+    		</zone>
+    		
+    		<zone name="tex.keyword-zone.skip-keyword">
+    		    <expression>(\\[A-Za-z_@!?:]*(?&lt;!un)(?:skip|size)[A-Za-z_@!?:]*)\s*(?:((?:\+|\-)?[0-9]*(\.|,)?[0-9]+)\s*(fi(?:lll|ll|l)|(?:\s*(true)?\s*(mu|cm|mm|in|pt|bp|em|ex|pc|sp|cc|dd)))|((\\[A-Za-z@!?:_]*[A-Za-z@!?:_]\s*)+)(?=\\fi))</expression>
+    		    <capture number="1" name="tex.command.general"/>
+    		    <capture number="2" name="tex.numeric"/>
+    		    <capture number="3" name="tex.punctuation.delimiter.point"/>
+    		    <capture number="4" name="tex.keyword.other.fillls"/>
+    		    <capture number="5" name="tex.keyword.other.true"/>
+    		    <capture number="6" name="tex.keyword.unit"/>
+    		    <capture number="7" name="tex.command.general"/>
+    		</zone>
+    		
+    		<zone name="tex.keyword-zone.plus-minus-keyword">
+    		    <expression>(\b|(?&lt;=\d))(minus|plus)(\b|(?=\d))</expression>
+    		</zone>
+    		
+    		<zone name="tex.keyword-zone.depth-width-height-keyword">
+    			<expression>(\b|(?&lt;=\d))(depth|width|height)(\b|(?=\d))</expression>
+    		</zone>
+    		
+    		<zone name="tex.keyword-zone.by-keyword">
+    		    <expression>(\b|(?&lt;=\d))by(\b|(?=\d))</expression>
+    		</zone>
+    		
+    	</collection>
+    	
+    	<collection name="Comment">
+    	    
+    	    <zone name="tex.comment-line-empty"><!--don´t want comments with no information in the navigator-->
+    	        <expression>(%(?:\s|%)*)$</expression>
+    	        <capture number="1" name="context.punctuation.comment.begin"/>
+    	    </zone>    
+    	    <zone name="tex.comment.line">
+    	        <expression>(%)(?:\s*(.+)$)|(%)(?:\s*$)</expression>
+    	        <capture number="1" name="context.punctuation.comment.begin"/>   
+    	    </zone>
+    	    
+    	</collection>
+    	
+    	<collection name="Unit">
+    	
+    		<zone name="tex.keyword-zone.unit">
+    		    <expression>((?:\+|\-)?[0-9]*(\.|,)?[0-9]+)\s*(true)?\s*(mu|cm|mm|in|pt|bp|em|ex|pc|sp|cc|dd)</expression>
+    		    <capture number="1" name="tex.numeric"/>
+    		    <capture number="2" name="tex.punctuation.delimiter.point"/>
+    		    <capture number="3" name="tex.keyword.other.true"/>
+    		    <capture number="4" name="tex.keyword.unit"/>
+    		</zone>
+    		
+    		<zone name="tex.numeric">
+    			<expression>((?:\+|\-)?[0-9]*(\.|,)?[0-9]+)</expression>
+    		</zone>
+    	
+    	</collection>
+    
+    </library>
+    
+</syntax>
