@@ -26,7 +26,6 @@
 	        </behavior>
 	    </completion>
 	    <completion string="insertpenalties"/>
-	    <completion string="interlinepenalty"/>
 	    <completion string="splitbotmark"/>
 	    <completion string="splitfirstmark"/>
 	    <completion string="splitmaxdepth">
@@ -72,7 +71,6 @@
 	        </behavior>
 	    </completion>
 	    <completion string="boxmaxdepth"/>
-	    <completion string="brokenpenalty"/>
 	    <completion string="cleaders">
 	        <behavior>
 	            <append-dynamic>
@@ -113,7 +111,6 @@
 	            </append-dynamic>
 	        </behavior>
 	    </completion>
-	    <completion string="exhyphenpenalty"/>
 	    <completion string="hbadness"/>
 	    <completion string="hbox">
 	        <behavior>
@@ -128,7 +125,7 @@
 	        <behavior>
 	            <append-dynamic>
 	                <matched-suffix>(\s+\S)|\s*([^\S])</matched-suffix>
-	                <transform-into>(?1:$0:${1:[${2:height} ${3:&lt;dimen&gt;} ${4:depth} ${5:&lt;dimen&gt;} ${6:width} ${7:&lt;dimen&gt;}]})</transform-into>
+	                <transform-into>(?1:$0:${1: ${2:height} ${3:&lt;dimen&gt;} ${4:depth} ${5:&lt;dimen&gt;} ${6:width} ${7:&lt;dimen&gt;}})</transform-into>
 	            </append-dynamic>
 	        </behavior>
 	    </completion>
@@ -213,7 +210,7 @@
 	        <behavior>
 	            <append-dynamic>
 	                <matched-suffix>(\s+\S)|\s*([^\S])</matched-suffix>
-	                <transform-into>(?1:$0:${1:[${2:height} ${3:&lt;dimen&gt;} ${4:depth} ${5:&lt;dimen&gt;} ${6:width} ${7:&lt;dimen&gt;}]})</transform-into>
+	                <transform-into>(?1:$0:${1: ${2:height} ${3:&lt;dimen&gt;} ${4:depth} ${5:&lt;dimen&gt;} ${6:width} ${7:&lt;dimen&gt;}})</transform-into>
 	            </append-dynamic>
 	        </behavior>
 	    </completion>
@@ -233,7 +230,6 @@
 	            </append-dynamic>
 	        </behavior>
 	    </completion>
-	    <completion string="widowpenalty"/>
 	    <completion string="xleaders">
 	        <behavior>
 	            <append-dynamic>
@@ -388,7 +384,6 @@
 	        </behavior>
 	    </completion>
 	    <completion string="limits"/>
-	    <completion string="linepenalty"/>
 	    <completion string="mathbin">
 	        <behavior>
 	            <append-dynamic>
@@ -647,14 +642,6 @@
 	    </completion>
 	    <completion string="nonstopmode"/>
 	    <completion string="pausing"/>
-	    <completion string="penalty">
-	        <behavior>
-	            <append-dynamic>
-	                <matched-suffix>(\s+\S)|\s*([^\S])</matched-suffix>
-	                <transform-into>(?1:$0:${1:&lt;number&gt;})</transform-into>
-	            </append-dynamic>
-	        </behavior>
-	    </completion>
 	    <completion string="scrollmode"/>
 	    <completion string="show">
 	        <behavior>
@@ -1085,7 +1072,6 @@
 	            </append-dynamic>
 	        </behavior>
 	    </completion>
-	    <completion string="hyphenpenalty"/>
 	    <completion string="language">
 	        <behavior>
 	            <append-dynamic>
@@ -1145,7 +1131,6 @@
 	        </behavior>
 	    </completion>
 	    <completion string="lastkern"/>
-	    <completion string="lastpenalty"/>
 	    <completion string="lower">
 	        <behavior>
 	            <append-dynamic>
@@ -1211,7 +1196,6 @@
 	        </behavior>
 	    </completion>
 	    <completion string="unkern"/>
-	    <completion string="unpenalty"/>
 	</set>
 	
 	<set name="com.tex.Registers" casesensitive="true">
@@ -1225,7 +1209,7 @@
 	        <behavior>
 	            <append-dynamic>
 	                <matched-suffix>(\s+\S)|\s*([^\S])</matched-suffix>
-	                <transform-into>(?1:$0:${1:&lt;numeric variables&gt;}${2:&lt;quantity&gt;})</transform-into>
+	                <transform-into>(?1:$0:${1:&lt;numeric variables&gt;} by ${2:&lt;quantity&gt;})</transform-into>
 	            </append-dynamic>
 	        </behavior>
 	    </completion>
@@ -1265,7 +1249,7 @@
 	        <behavior>
 	            <append-dynamic>
 	                <matched-suffix>(\s+\S)|\s*([^\S])</matched-suffix>
-	                <transform-into>(?1:$0:${1:&lt;numeric variable&gt;}${2:&lt;number&gt;})</transform-into>
+	                <transform-into>(?1:$0:${1:&lt;numeric variable&gt;} by ${2:&lt;number&gt;})</transform-into>
 	            </append-dynamic>
 	        </behavior>
 	    </completion>
@@ -1273,7 +1257,7 @@
 	        <behavior>
 	            <append-dynamic>
 	                <matched-suffix>(\s+\S)|\s*([^\S])</matched-suffix>
-	                <transform-into>(?1:$0:${1:&lt;numeric variable&gt;}${2:&lt;number&gt;})</transform-into>
+	                <transform-into>(?1:$0:${1:&lt;numeric variable&gt;} by ${2:&lt;number&gt;})</transform-into>
 	            </append-dynamic>
 	        </behavior>
 	    </completion>
@@ -1732,11 +1716,31 @@
 	            <transform-into>(?1:: $0)</transform-into>
 	        </append-dynamic>
 	    </behavior>
+	    <completion string="brokenpenalty"/>
+	    <completion string="clubpenalty"/>
+	    <completion string="exhyphenpenalty"/>
+	    <completion string="floatingpenalty"/>
+	    <completion string="hyphenpenalty"/>
+	    <completion string="interlinepenalty"/>
+	    <completion string="lastpenalty"/>
+	    <completion string="linepenalty"/>
+	    <completion string="outputpenalty"/>
+	    <completion string="penalty">
+	        <behavior>
+	            <append-dynamic>
+	                <matched-suffix>(\s+\S)|\s*([^\S])</matched-suffix>
+	                <transform-into>(?1:$0:${1:&lt;number&gt;})</transform-into>
+	            </append-dynamic>
+	        </behavior>
+	    </completion>
+	    <completion string="unpenalty"/>
+	    <completion string="widowpenalty"/>
 	    <completion string="binoppenalty"/>
 	    <completion string="displaywidowpenalty"/>
 	    <completion string="postdisplaypenalty"/>
 	    <completion string="predisplaypenalty"/>
 	    <completion string="relpenalty"/>
+	    
 	</set>
 	
 	<set name="com.tex.Logic" casesensitive="true">
@@ -1854,7 +1858,6 @@
 	    </behavior>
 	    <completion string="botmark"/>
 	    <completion string="firstmark"/>
-	    <completion string="floatingpenalty"/>
 	    <completion string="mark">
 	        <behavior>
 	            <append-dynamic>
@@ -1889,7 +1892,6 @@
 	            </append-dynamic>
 	        </behavior>
 	    </completion>
-	    <completion string="clubpenalty"/>
 	    <completion string="endinput"/>
 	    <completion string="immediate">
 	        <behavior>
@@ -1932,7 +1934,6 @@
 	            </append-dynamic>
 	        </behavior>
 	    </completion>
-	    <completion string="outputpenalty"/>
 	    <completion string="read">
 	        <behavior>
 	            <append-dynamic>
