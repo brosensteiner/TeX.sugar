@@ -3,22 +3,22 @@
 <settings>
         	
     	<setting name="comment-multiline-start">
-    		<language-context>TeX</language-context>
+    		<language-context>tex</language-context>
     		<no-value/>
     	</setting>
     		
     	<setting name="comment-multiline-end">
-    		<language-context>TeX</language-context>
+    		<language-context>tex</language-context>
     		<no-value/>
     	</setting>
     		
     	<setting name="comment-multiline-end-inert">
-    		<language-context>TeX</language-context>
+    		<language-context>tex</language-context>
     		<no-value/>
     	</setting>
     	
     	<setting name="comment-singleline-start">
-    		<language-context>TeX</language-context>
+    		<language-context>tex</language-context>
     		<value>%</value>
     	</setting>
 

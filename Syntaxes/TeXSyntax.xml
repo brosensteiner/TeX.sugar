@@ -3,27 +3,25 @@
 
     <zones>
     	<!--special syntax highlighting:-->
+    	<include collection="Escapecharacter" />
     	<include collection="TeXDefine" />
     	<include collection="If_Else" />
     	<include collection="Unit" />
     	<include collection="SpecialKeywordsTeX" />
     	<include collection="Comment" />
     	<include collection="Group" />
+    	<include collection="TeXBalancedBraces" />
        	
     	<zone name="tex.command.function.Registers.special-Registers">
     	    <expression>\\(advance|divide|multiply)(\b|(?=\d))</expression>
     	</zone>
-    	
+    	<!--box and rule commands are made as "common practice" general as possible (users can define its own ...) to make highlighting of "special" commands possible like "hight", "width" and so on-->
     	<zone name="tex.command.function.Box.special-box">
     	    <expression>\\\w*box(\b|(?=\d))</expression>
     	</zone>
     	
     	<zone name="tex.command.function.Box.special-rule">
     		<expression>\\\w*rule(\b|(?=\d))</expression>
-    	</zone>
-    	
-    	<zone name="tex.command.function.Kern.special-kern">
-    		<expression>\\\w*kern(\b|(?=\d))</expression>
     	</zone>
     	
        	<!--normal tex.command.function.-->
@@ -64,11 +62,11 @@
     	</zone>
     	
     	<zone name="tex.command.function.Hyphenation">
-    	    <expression>\\(-|defaulthyphenchar|discretionary|hyphenation|hyphenchar|language|lefthyphenmin|patterns|righthyphenmin|setlanguage|uchyph)(\b|(?=\d))</expression>
+    	    <expression>\\((?&lt;!-)-(?!-)|defaulthyphenchar|discretionary|hyphenation|hyphenchar|language|lefthyphenmin|patterns|righthyphenmin|setlanguage|uchyph)(\b|(?=\d))</expression>
     	</zone>
     	
     	<zone name="tex.command.function.Kern">
-    	    <expression>\\(lastkern|lower|mathsurround|mkern|moveleft|moveright|nulldelimiterspace|raise|scriptspace|unkern)(\b|(?=\d))</expression>
+    	    <expression>\\(lastkern|lower|mathsurround|mkern|moveleft|moveright|nulldelimiterspace|raise|scriptspace|unkern|kern)(\b|(?=\d))</expression>
     	</zone>
     	
     	<zone name="tex.command.function.Macro">
@@ -103,38 +101,27 @@
     
     <library>
     
+    	<collection name="Escapecharacter">
+    	    <zone name="context.literal.escape.character">
+    	        <expression>\\[^0-9a-zA-Z@?!\[\]\(\)]|\\\$</expression>
+    	    </zone>
+    	</collection>
+    
     	<collection name="TeXDefine">
     		
-    		<zone name="tex.function.command-define">
-    			<starts-with>
-    				<expression>(\\(?:g|e|x|count|dimen|muskip|skip|toks)?def)\s*(\\[^\s\{\}#\\=]*[^\s\{\}#\\=])\s*((?:\#{1,9})+)?\s*(\{)</expression>
-    				<capture number="1" name="tex.command.function.general.Macro.def"/>
-    				<capture number="2" name="tex.command.function.name"/>
-    				<capture number="3" name="tex.support.variable.define"/>
-    				<capture number="4" name="tex.open-bracket.level0"/>
-    			</starts-with>
-    			<ends-with>
-    				<expression>\}</expression>
-    				<capture number="0" name="tex.close-bracket.level0"/>
-    			</ends-with>
-    			<subzones name="tex.function-define.tex-subzone">
-    			    <include syntax="language-root.tex"/>
-    			</subzones>
-    		</zone>
-    		
-    		<zone name="tex.command.function.function.define">
-    			<expression>(\\(?:g|e|x|count|dimen|muskip|skip|toks)?def)\s*(\\[^\s\{\}#\\=]*[^\s\{\}#\\=])</expression>
+    		<zone name="tex.command.function.define">
+    			<expression>(\\(?:g|e|x|count|dimen|muskip|skip|toks)?def)\s*(\\[^\s\{\}\[\]#\\=]*[^\s\{\}\[\]#\\])</expression>
     			<capture number="1" name="tex.command.function.general.def"/>
     			<capture number="2" name="tex.command.function.name"/>
     		</zone>
     		
-    		<zone name="tex.command.function.function.let">
-    		    <expression>\\(?:future)?let\b\s*(\\[^\s\{\}#\\=]*[^\s\{\}#\\=])?</expression>
+    		<zone name="tex.command.function.let">
+    		    <expression>\\(?:future)?let\b\s*(\\[^\s\{\}#\\=]*[^\s\{\}#\\])?</expression>
     		    <capture number="1" name="tex.command.function.name"/>
     		</zone>
     		
     		<zone name="tex.support.variable.define">
-    		    <expression>\#{1,9}[A-Za-z_@!?:1-9]+</expression>
+    		    <expression>\#{1,9}[1-9]</expression>
     		</zone>
     	
     	</collection>
@@ -176,7 +163,7 @@
     		    <expression>(\b|(?&lt;=\d))(minus|plus)(\b|(?=\d))</expression>
     		</zone>
     		
-    		<!--"(?:\s*(?!=)", because could interfere with ConTeXt keys-->
+    		<!--"(?:\s*(?!=)", because could interfere with ConTeXt keys "width" and "height"-->
     		<zone name="tex.keyword-zone.depth-width-height-keyword">
     			<expression>(?:\b|(?&lt;=\d))(?:depth|width|height)(?:\s*(?:((?:\+|\-)?[0-9]*(\.)?[0-9]+)\s*(fi(?:lll|ll|l)|(?:\s*(true)?\s*(mu|cm|mm|in|pt|bp|em|ex|pc|sp|cc|dd)))|(?:(?!\s*=)|(?&lt;=\d))))</expression>
     			<capture number="1" name="tex.numeric"/>
@@ -197,21 +184,21 @@
     	    
     	    <zone name="tex.comment-line-empty"><!--don´t want comments with no information in the navigator-->
     	        <expression>(%(?:\s|%)*)$</expression>
-    	        <capture number="1" name="context.punctuation.comment.begin"/>
+    	        <capture number="1" name="punctuation.comment.begin"/>
     	    </zone>    
     	    <zone name="tex.comment.line">
     	        <expression>(%)(?:\s*(.+)$)|(%)(?:\s*$)</expression>
-    	        <capture number="1" name="context.punctuation.comment.begin"/>   
+    	        <capture number="1" name="punctuation.comment.begin"/>   
     	    </zone>
     	    
     	</collection>
     	        
     	<collection name="Group">
-    	    <zone name="tex.begin.level0">
-    	        <expression>(\\(begin|b)group)\b</expression>
+    	    <zone name="tex.command.begingroup.begin.level0">
+    	        <expression>(\\(begin|b)group)(\b|(?=\d))</expression>
     	    </zone>
-    	    <zone name="tex.end.level0">
-    	        <expression>(\\(end|e)group)\b</expression>
+    	    <zone name="tex.command.endgroup.end.level0">
+    	        <expression>(\\(end|e)group)(\b|(?=\d))</expression>
     	    </zone>
     	</collection>
     	

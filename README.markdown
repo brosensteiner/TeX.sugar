@@ -1,6 +1,7 @@
 # TeX.sugar
 
-TeX sugar for MacRabbit´s Espresso. The primary goal of this sugar is to be "injected" in TeX-style macropackages like a LaTeX sugar or ConTeXt sugar. Therefor it contains all TeX commands for code-sense and syntax highlighting (325!). The sugar is designed for flexible injections of its zones/collections (TeX units, TeX comments ...). Plain TeX commands will maybe come in the future ... 
+TeX sugar for MacRabbit´s Espresso. The primary goal of this sugar is to be "injected" in TeX-style macro-packages like a LaTeX sugar or ConTeXt sugar. Therefor it contains all TeX commands for code-sense and syntax highlighting (325!). The sugar is designed for flexible injections of its zones/collections (TeX units, TeX comments, TeX number ...), but best is to have a look at the syntax definition :)
+
 If someone has suggestions or questions please let me know and [email me](mailto:brosensteiner@gmail.com)
 
 

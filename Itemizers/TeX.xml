@@ -2,7 +2,7 @@
 
 <itemizer>
 
-<!--control block-->
+	<!--control block-->
 	<recipe name="tex.control.if">
 		<class>ESJSControlBlockItem</class>
 		<selector>tex.keyword.control.if:capture(name)</selector>
@@ -25,15 +25,31 @@ metapost macro def
 			<include recipe="metapost.container.control.for"/>
 		</subrecipes>
 	</recipe>-->
-<!--comment-->
+	
+	<!--comment-->
 	<recipe name="tex.comment">
 		<class>ESCommentItem</class>
 		<selector>tex.comment.line</selector>
 	</recipe>
 	
-<!--define/def...-->	
+	<!--define/def...-->	
 	<recipe name="tex.container.function">
 		<selector>tex.comamnd.function.define > name:capture(name)</selector>
+	</recipe>
+	
+	<!--math: math is really special in TeX so it deserves a place in the Navigator :)-->
+	<recipe name="tex.container.math">
+	
+		<class>ESCodeClassItem</class>
+		<start-selector>tex.math > begin.math:capture(name)</start-selector>
+		<end-selector>tex.math > end.math</end-selector>
+		<subrecipes>
+			<!--<include recipe="tex.comment"/>
+			<include recipe="tex.container.function"/>
+			<include recipe="tex.control.if"/>-->
+			<include-root-recipes />
+		</subrecipes>
+	
 	</recipe>
 	
 	
