@@ -9,11 +9,11 @@
 }
 
 tex.special-Registers + function + keyword-zone.by-keyword,
-tex.special-rule + depth-width-height-keyword,
+tex.keyword-zone + plus-minus-keyword,
 
+tex.special-rule + depth-width-height-keyword,
 tex.special-rule + depth-width-height-keyword + depth-width-height-keyword,
 tex.special-rule + depth-width-height-keyword + depth-width-height-keyword + depth-width-height-keyword,
-tex.keyword-zone + plus-minus-keyword,
 
 tex.special-rule + depth-width-height-keyword + function + depth-width-height-keyword,
 tex.special-rule + depth-width-height-keyword + function + depth-width-height-keyword + function + depth-width-height-keyword,
@@ -22,6 +22,12 @@ tex.special-rule + depth-width-height-keyword + function + function + depth-widt
 tex.special-rule + depth-width-height-keyword + function + function + depth-width-height-keyword + function + function + depth-width-height-keyword,
 tex.special-rule + depth-width-height-keyword + function + function + depth-width-height-keyword + function + depth-width-height-keyword,
 tex.special-rule + depth-width-height-keyword + function + depth-width-height-keyword + function + function + depth-width-height-keyword,
+
+tex.special-rule + depth-width-height-keyword + depth-width-height-keyword + function + depth-width-height-keyword,
+tex.special-rule + depth-width-height-keyword + depth-width-height-keyword + function + function + depth-width-height-keyword,
+
+tex.special-rule + depth-width-height-keyword + function + depth-width-height-keyword + depth-width-height-keyword,
+tex.special-rule + depth-width-height-keyword + function + function + depth-width-height-keyword + depth-width-height-keyword,
 
 tex.special-box + keyword-zone.to-spread-keyword > to-spread-keyword {
 	color: hsl(84, 64%, 56%);

@@ -3,7 +3,7 @@
 <codesense>
 	
 	<provider>
-	    <selector>language-root.tex, language-root.tex *</selector>
+	    <selector>language-root.tex, language-root.tex *,language-root.context, language-root.context *,language-root.latex, language-root.latex *</selector>
 	    <completions>com.tex.Character</completions>
 	    <completions>com.tex.Hyphenation</completions>
 	    <completions>com.tex.Fonts</completions>

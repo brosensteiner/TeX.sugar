@@ -70,10 +70,6 @@
     	<zone name="tex.command.function.Kern">
     	    <expression>\\(lastkern|lower|mathsurround|mkern|moveleft|moveright|nulldelimiterspace|raise|scriptspace|unkern)(\b|(?=\d))</expression>
     	</zone>
-
-    	<zone name="tex.command.function.Registers">
-    	    <expression>\\(count|countdef|dimen|dimendef|muskip|muskipdef|skip|skipdef|toks|toksdef)(\b|(?=\d))</expression>
-    	</zone>
     	
     	<zone name="tex.command.function.Macro">
     	    <expression>\\(afterassignment|aftergroup|begingroup|csname|endcsname|endgroup|expandafter|global|globaldefs|long|noexpand|outer|relax|the|def|xdef|gdef|edef)(\b|(?=\d))</expression>
@@ -109,9 +105,9 @@
     
     	<collection name="TeXDefine">
     		
-    		<zone name="tex.command.function.function.define">
+    		<zone name="tex.function.command-define">
     			<starts-with>
-    				<expression>(\\(?:g|e|x)?def)\s*(\\[^\s\{\}#\\]*[^\s\{\}#\\])\s*((?:\#{1,9})+)?\s*(\{)</expression>
+    				<expression>(\\(?:g|e|x|count|dimen|muskip|skip|toks)?def)\s*(\\[^\s\{\}#\\=]*[^\s\{\}#\\=])\s*((?:\#{1,9})+)?\s*(\{)</expression>
     				<capture number="1" name="tex.command.function.general.Macro.def"/>
     				<capture number="2" name="tex.command.function.name"/>
     				<capture number="3" name="tex.support.variable.define"/>
@@ -121,19 +117,19 @@
     				<expression>\}</expression>
     				<capture number="0" name="tex.close-bracket.level0"/>
     			</ends-with>
-    			<subzones name="tex.function-define-subzone">
+    			<subzones name="tex.function-define.tex-subzone">
     			    <include syntax="language-root.tex"/>
     			</subzones>
     		</zone>
     		
     		<zone name="tex.command.function.function.define">
-    			<expression>(\\(?:g|e|x)?def)\s*(\\[^\s\{\}#\\]*[^\s\{\}#\\])</expression>
+    			<expression>(\\(?:g|e|x|count|dimen|muskip|skip|toks)?def)\s*(\\[^\s\{\}#\\=]*[^\s\{\}#\\=])</expression>
     			<capture number="1" name="tex.command.function.general.def"/>
     			<capture number="2" name="tex.command.function.name"/>
     		</zone>
     		
     		<zone name="tex.command.function.function.let">
-    		    <expression>\\(?:future)?let\b\s*(\\[^\s\{\}#\\]*[^\s\{\}#\\])?</expression>
+    		    <expression>\\(?:future)?let\b\s*(\\[^\s\{\}#\\=]*[^\s\{\}#\\=])?</expression>
     		    <capture number="1" name="tex.command.function.name"/>
     		</zone>
     		
@@ -180,8 +176,9 @@
     		    <expression>(\b|(?&lt;=\d))(minus|plus)(\b|(?=\d))</expression>
     		</zone>
     		
+    		<!--"(?:\s*(?!=)", because could interfere with ConTeXt keys-->
     		<zone name="tex.keyword-zone.depth-width-height-keyword">
-    			<expression>(?:\b|(?&lt;=\d))(?:depth|width|height)(?:\s*(?:((?:\+|\-)?[0-9]*(\.)?[0-9]+)\s*(fi(?:lll|ll|l)|(?:\s*(true)?\s*(mu|cm|mm|in|pt|bp|em|ex|pc|sp|cc|dd)))|(?:\b|(?&lt;=\d))))</expression>
+    			<expression>(?:\b|(?&lt;=\d))(?:depth|width|height)(?:\s*(?:((?:\+|\-)?[0-9]*(\.)?[0-9]+)\s*(fi(?:lll|ll|l)|(?:\s*(true)?\s*(mu|cm|mm|in|pt|bp|em|ex|pc|sp|cc|dd)))|(?:(?!\s*=)|(?&lt;=\d))))</expression>
     			<capture number="1" name="tex.numeric"/>
     			<capture number="2" name="tex.punctuation.delimiter.point"/>
     			<capture number="3" name="tex.keyword.other.fillls"/>
