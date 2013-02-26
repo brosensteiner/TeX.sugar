@@ -127,12 +127,25 @@
     	</collection>
     	
     	<collection name="If_Else">
-    		<zone name="tex.keyword.control.if">
-    		    <expression>\\if[A-Za-z@!?:_]*(\b|(?=\d))</expression>
+    		<!--\if* will catch the next command -> maybe there are some environment zones in other sugars defined and this would break them, because of TeX complex syntax-->
+    		<zone name="tex.keyword.control-zone">
+    		    <expression>(\\if[A-Za-z@!?:_]*)(\\[[:alpha:]_@!?:]*[[:alpha:]_@!?:])?(\b|(?=\d))</expression>
+    		    <capture number="1" name="tex.keyword.control.if"/>
+    		    <capture number="2" name="tex.support.function.general"/>
     		</zone>
-    	    <zone name="tex.keyword.control">
-    	        <expression>(\\fi|\\else|\\or)(\b|(?=\d))</expression>
+    		
+    		<zone name="tex.keyword.control.else">
+    		    <expression>\\else(\b|(?=\d))</expression>
+    		</zone>
+    		
+    		<zone name="tex.keyword.control.or">
+    		    <expression>\\or(\b|(?=\d))</expression>
+    		</zone>
+    		
+    	    <zone name="tex.keyword.control.fi">
+    	        <expression>\\fi(\b|(?=\d))</expression>
     	    </zone>
+    	    
     	</collection>
     	
     	<collection name="SpecialKeywordsTeX">

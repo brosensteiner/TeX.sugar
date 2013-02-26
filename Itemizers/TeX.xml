@@ -37,22 +37,6 @@ metapost macro def
 		<selector>tex.comamnd.function.define > name:capture(name)</selector>
 	</recipe>
 	
-	<!--math: math is really special in TeX so it deserves a place in the Navigator :)-->
-	<recipe name="tex.container.math">
-	
-		<class>ESCodeClassItem</class>
-		<start-selector>tex.math > begin.math:capture(name)</start-selector>
-		<end-selector>tex.math > end.math</end-selector>
-		<subrecipes>
-			<!--<include recipe="tex.comment"/>
-			<include recipe="tex.container.function"/>
-			<include recipe="tex.control.if"/>-->
-			<include-root-recipes />
-		</subrecipes>
-	
-	</recipe>
-	
-	
 </itemizer>
 
 
