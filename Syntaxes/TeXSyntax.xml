@@ -3,11 +3,12 @@
 
     <zones>
     	<!--special syntax highlighting:-->
-    	<include collection="Escapecharacter" />
     	<include collection="TeXDefine" />
     	<include collection="If_Else" />
     	<include collection="Unit" />
     	<include collection="SpecialKeywordsTeX" />
+    	<include collection="TeXKeywords" />
+    	<include collection="Escapecharacter" />
     	<include collection="Comment" />
     	<include collection="Group" />
     	<include collection="TeXBalancedBraces" />
@@ -34,7 +35,7 @@
     	</zone>
     	
     	<zone name="tex.command.function.Fonts">
-    	    <expression>\\(/|fam|font|fontdimen|fontname|nullfont|scriptfont|scriptscriptfont|textfont)(\b|(?=\d))</expression>
+    	    <expression>\\(fam|font|fontdimen|fontname|nullfont|scriptfont|scriptscriptfont|textfont)(\b|(?=\d))</expression>
     	</zone>
     	
     	<zone name="tex.command.function.Math">
@@ -74,7 +75,7 @@
     	</zone>
     	
     	<zone name="tex.command.function.Character">
-    	    <expression>\\(\\|accent|catcode|char|chardef|defaultskewchar|delcode|delimiter|endlinechar|escapechar|lccode|lowercase|mathaccent|mathchar|mathchardef|mathcode|newlinechar|number|romannumeral|sfcode|skewchar|string|uccode|uppercase)(\b|(?=\d))</expression>
+    	    <expression>\\(accent|catcode|char|chardef|defaultskewchar|delcode|delimiter|endlinechar|escapechar|lccode|lowercase|mathaccent|mathchar|mathchardef|mathcode|newlinechar|number|romannumeral|sfcode|skewchar|string|uccode|uppercase)(\b|(?=\d))</expression>
     	</zone>
     	
     	<zone name="tex.command.function.Glue">
@@ -102,7 +103,7 @@
     <library>
     
     	<collection name="Escapecharacter">
-    	    <zone name="context.literal.escape.character">
+    	    <zone name="tex.escape.character">
     	        <expression>\\[^0-9a-zA-Z@?!\[\]\(\)]|\\\$</expression>
     	    </zone>
     	</collection>
@@ -127,11 +128,11 @@
     	</collection>
     	
     	<collection name="If_Else">
-    		<!--\if* will catch the next command -> maybe there are some environment zones in other sugars defined and this would break them, because of TeX complex syntax-->
+    		<!--\if* will catch the next command -> maybe there are some environment zones in other sugars defined and this would break them, because of TeX´s complex syntax-->
     		<zone name="tex.keyword.control-zone">
-    		    <expression>(\\if[A-Za-z@!?:_]*)(\\[[:alpha:]_@!?:]*[[:alpha:]_@!?:])?(\b|(?=\d))</expression>
+    		    <expression>(\\if[A-Za-z@!?:_]*)\s*(\\[[:alpha:]_@!?:]*[[:alpha:]_@!?:])?(\b|(?=\d))</expression>
     		    <capture number="1" name="tex.keyword.control.if"/>
-    		    <capture number="2" name="tex.support.function.general"/>
+    		    <capture number="2" name="tex.command.support.function.general"/>
     		</zone>
     		
     		<zone name="tex.keyword.control.else">
@@ -149,7 +150,7 @@
     	</collection>
     	
     	<collection name="SpecialKeywordsTeX">
-    		<!--these commands should be as general as possible, but on the other side as restrictive as possible for better .css highlighting:-->
+    		<!--these commands should be as general as possible, but on the other side as restrictive as possible for better .css highlighting. Anyway, it is always a trade-off-->
     		<zone name="tex.keyword-zone.to-spread-keyword">
     		    <expression>(to|spread)\s*(?:((?:\+|\-)?[0-9]*(\.)?[0-9]+)\s*(fi(?:lll|ll|l)|(?:\s*(true)?\s*(mu|cm|mm|in|pt|bp|em|ex|pc|sp|cc|dd)?))|(?:\b|(?&lt;=\d)))</expression>
     		    <capture number="1" name="tex.keyword-zone.to-spread-keyword"/>
@@ -160,7 +161,7 @@
     		    <capture number="6" name="tex.keyword.unit"/>
     		    <capture number="7" name="tex.command.function.general"/>
     		</zone>
-    		
+
     		<zone name="tex.keyword-zone.skip-keyword">
     		    <expression>(\\[A-Za-z_@!?:]*(?&lt;!un)(?:skip|size)[A-Za-z_@!?:]*)\s*(?:((?:\+|\-)?[0-9]*(\.)?[0-9]+)\s*(fi(?:lll|ll|l)|(?:\s*(true)?\s*(mu|cm|mm|in|pt|bp|em|ex|pc|sp|cc|dd)))|(?:\b|(?&lt;=\d)))</expression>
     		    <capture number="1" name="tex.command.function.general"/>
@@ -215,18 +216,35 @@
     	    </zone>
     	</collection>
     	
+    	<collection name="TeXKeywords">
+    		
+    		<zone name="tex.keyword.tab">
+    			<expression>&amp;</expression>
+    		</zone>
+    		<zone name="tex.keyword.none-splitting-space">
+    			<expression>~</expression>
+    		</zone>
+    		<zone name="tex.keyword.italic-correction">
+    			<expression>\\/</expression>
+    		</zone>
+    		<zone name="tex.keyword.discretionary-hyphen">
+    			<expression>\\-</expression>
+    		</zone>
+    		<zone name="tex.keyword.control-space">
+    			<expression>\\ </expression>
+    		</zone>
+    		
+    	</collection>
+    	
     	<collection name="Unit">
     	
     		<zone name="tex.keyword-zone.unit">
-    		    <expression>((?:\+|\-)?[0-9]*(\.)?[0-9]+)\s*(true)?\s*(mu|cm|mm|in|pt|bp|em|ex|pc|sp|cc|dd)</expression>
+    		    <expression>((?:\+|\-)?[0-9]*(\.)?[0-9]+)\s*(?:(fi(?:lll|ll|l))|(?:\s*(true)?\s*(mu|cm|mm|in|pt|bp|em|ex|pc|sp|cc|dd)))?</expression>
     		    <capture number="1" name="tex.numeric"/>
     		    <capture number="2" name="tex.punctuation.delimiter.point"/>
-    		    <capture number="3" name="tex.keyword.other.true"/>
-    		    <capture number="4" name="tex.keyword.unit"/>
-    		</zone>
-    		
-    		<zone name="tex.numeric">
-    			<expression>((?:\+|\-)?[0-9]*(\.)?[0-9]+)</expression>
+    		    <capture number="3" name="tex.keyword.other.fillls"/>
+    		    <capture number="4" name="tex.keyword.other.true"/>
+    		    <capture number="5" name="tex.keyword.unit"/>
     		</zone>
     	
     	</collection>

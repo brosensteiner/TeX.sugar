@@ -8,8 +8,19 @@
 	spell-check: disabled;
 }
 
-tex.special-Registers + function + keyword-zone.by-keyword,
+tex.special-Registers + tex + by-keyword,
+tex.special-Registers + tex + tex + by-keyword,
+tex.special-Registers + function + by-keyword,
+tex.special-Registers + function + function + by-keyword,
+tex.special-Registers + function + tex + by-keyword,
+tex.special-Registers + function + tex + tex + by-keyword,
+tex.special-Registers + function + tex + function + by-keyword,
+tex.special-Registers + tex + tex + function + by-keyword,
+tex.special-Registers + tex + function + tex + by-keyword,
+
 tex.keyword-zone + plus-minus-keyword,
+tex.keyword-zone + function + plus-minus-keyword,
+tex.keyword-zone + function + function + plus-minus-keyword,
 
 tex.special-rule + depth-width-height-keyword,
 tex.special-rule + depth-width-height-keyword + depth-width-height-keyword,

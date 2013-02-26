@@ -6,7 +6,7 @@
 	    <behavior>
 	        <append-dynamic>
 	            <matched-suffix>(\s+\S)|\s*([^\S])</matched-suffix>
-	            <transform-into>(?1:: $0)</transform-into>
+	            <transform-into>(?1:$0: $0)</transform-into>
 	        </append-dynamic>
 	    </behavior>
 	    <completion string="holdinginserts">
@@ -58,7 +58,7 @@
 	    <behavior>
 	        <append-dynamic>
 	            <matched-suffix>(\s+\S)|\s*([^\S])</matched-suffix>
-	            <transform-into>(?1:: $0)</transform-into>
+	            <transform-into>(?1:$0: $0)</transform-into>
 	        </append-dynamic>
 	    </behavior>
 	    <completion string="badness"/>
@@ -244,7 +244,7 @@
 	    <behavior>
 	        <append-dynamic>
 	            <matched-suffix>(\s+\S)|\s*([^\S])</matched-suffix>
-	            <transform-into>(?1:: $0)</transform-into>
+	            <transform-into>(?1:$0: $0)</transform-into>
 	        </append-dynamic>
 	    </behavior>
 	    <completion string="/"/>
@@ -311,7 +311,7 @@
 	    <behavior>
 	        <append-dynamic>
 	            <matched-suffix>(\s+\S)|\s*([^\S])</matched-suffix>
-	            <transform-into>(?1:: $0)</transform-into>
+	            <transform-into>(?1:$0: $0)</transform-into>
 	        </append-dynamic>
 	    </behavior>
 	    <completion string="above">
@@ -508,7 +508,7 @@
 	    <behavior>
 	        <append-dynamic>
 	            <matched-suffix>(\s+\S)|\s*([^\S])</matched-suffix>
-	            <transform-into>(?1:: $0)</transform-into>
+	            <transform-into>(?1:$0: $0)</transform-into>
 	        </append-dynamic>
 	    </behavior>
 	    <completion string="day"/>
@@ -549,7 +549,7 @@
 	    <behavior>
 	        <append-dynamic>
 	            <matched-suffix>(\s+\S)|\s*([^\S])</matched-suffix>
-	            <transform-into>(?1:: $0)</transform-into>
+	            <transform-into>(?1:$0: $0)</transform-into>
 	        </append-dynamic>
 	    </behavior>
 	    <completion string="cr"/>
@@ -602,7 +602,7 @@
 	    <behavior>
 	        <append-dynamic>
 	            <matched-suffix>(\s+\S)|\s*([^\S])</matched-suffix>
-	            <transform-into>(?1:: $0)</transform-into>
+	            <transform-into>(?1:$0: $0)</transform-into>
 	        </append-dynamic>
 	    </behavior>
 	    <completion string="batchmode"/>
@@ -762,7 +762,7 @@
 	    <behavior>
 	        <append-dynamic>
 	            <matched-suffix>(\s+\S)|\s*([^\S])</matched-suffix>
-	            <transform-into>(?1:: $0)</transform-into>
+	            <transform-into>(?1:$0: $0)</transform-into>
 	        </append-dynamic>
 	    </behavior>
 	    <completion string="hoffset">
@@ -819,7 +819,7 @@
 	    <behavior>
 	        <append-dynamic>
 	            <matched-suffix>(\s+\S)|\s*([^\S])</matched-suffix>
-	            <transform-into>(?1:: $0)</transform-into>
+	            <transform-into>(?1:$0: $0)</transform-into>
 	        </append-dynamic>
 	    </behavior>
 	    <completion string="adjdemerits">
@@ -1036,7 +1036,7 @@
 	    <behavior>
 	        <append-dynamic>
 	            <matched-suffix>(\s+\S)|\s*([^\S])</matched-suffix>
-	            <transform-into>(?1:: $0)</transform-into>
+	            <transform-into>(?1:$0: $0)</transform-into>
 	        </append-dynamic>
 	    </behavior>
 	    <completion string="-"/>
@@ -1119,7 +1119,7 @@
 	    <behavior>
 	        <append-dynamic>
 	            <matched-suffix>(\s+\S)|\s*([^\S])</matched-suffix>
-	            <transform-into>(?1:: $0)</transform-into>
+	            <transform-into>(?1:$0: $0)</transform-into>
 	        </append-dynamic>
 	    </behavior>
 	    <completion string="kern">
@@ -1202,7 +1202,7 @@
 	    <behavior>
 	        <append-dynamic>
 	            <matched-suffix>(\s+\S)|\s*([^\S])</matched-suffix>
-	            <transform-into>(?1:: $0)</transform-into>
+	            <transform-into>(?1:$0: $0)</transform-into>
 	        </append-dynamic>
 	    </behavior>
 	    <completion string="advance">
@@ -1315,7 +1315,7 @@
 	    <behavior>
 	        <append-dynamic>
 	            <matched-suffix>(\s+\S)|\s*([^\S])</matched-suffix>
-	            <transform-into>(?1:: $0)</transform-into>
+	            <transform-into>(?1:$0: $0)</transform-into>
 	        </append-dynamic>
 	    </behavior>
 	    <completion string="afterassignment">
@@ -1449,7 +1449,7 @@
 	    <behavior>
 	        <append-dynamic>
 	            <matched-suffix>(\s+\S)|\s*([^\S])</matched-suffix>
-	            <transform-into>(?1:: $0)</transform-into>
+	            <transform-into>(?1:$0: $0)</transform-into>
 	        </append-dynamic>
 	    </behavior>
 	    <completion string="accent">
@@ -1614,7 +1614,7 @@
 	    <behavior>
 	        <append-dynamic>
 	            <matched-suffix>(\s+\S)|\s*([^\S])</matched-suffix>
-	            <transform-into>(?1:: $0)</transform-into>
+	            <transform-into>(?1:$0: $0)</transform-into>
 	        </append-dynamic>
 	    </behavior>
 	    <completion string="abovedisplayshortskip">
@@ -1713,7 +1713,7 @@
 	    <behavior>
 	        <append-dynamic>
 	            <matched-suffix>(\s+\S)|\s*([^\S])</matched-suffix>
-	            <transform-into>(?1:: $0)</transform-into>
+	            <transform-into>(?1:$0: $0)</transform-into>
 	        </append-dynamic>
 	    </behavior>
 	    <completion string="brokenpenalty"/>
@@ -1747,7 +1747,7 @@
 	    <behavior>
 	        <append-dynamic>
 	            <matched-suffix>(\s+\S)|\s*([^\S])</matched-suffix>
-	            <transform-into>(?1:: $0)</transform-into>
+	            <transform-into>(?1:$0: $0)</transform-into>
 	        </append-dynamic>
 	    </behavior>
 	    <completion string="else"/>
@@ -1853,7 +1853,7 @@
 	    <behavior>
 	        <append-dynamic>
 	            <matched-suffix>(\s+\S)|\s*([^\S])</matched-suffix>
-	            <transform-into>(?1:: $0)</transform-into>
+	            <transform-into>(?1:$0: $0)</transform-into>
 	        </append-dynamic>
 	    </behavior>
 	    <completion string="botmark"/>
@@ -1873,7 +1873,7 @@
 	    <behavior>
 	        <append-dynamic>
 	            <matched-suffix>(\s+\S)|\s*([^\S])</matched-suffix>
-	            <transform-into>(?1:: $0)</transform-into>
+	            <transform-into>(?1:$0: $0)</transform-into>
 	        </append-dynamic>
 	    </behavior>
 	    <completion string="closein">
