@@ -8,24 +8,6 @@
 		<selector>tex.keyword.control.if:capture(name)</selector>
 	</recipe>
 	
-<!--metapost control block	
-	<recipe name="metapost.container.control.for">
-		<class>ESJSControlBlockItem</class>
-		<start-selector>metafun.keyword.control[text='for']:capture(itemizer-firstused) + *:capture(open-parameters) ~ metafun.keyword.control[text=':']:capture(close-parameters)</start-selector>
-		<end-selector>metafun.keyword.control[text='endfor']</end-selector>
-		<subrecipes>
-			<include recipe="metapost.container.control.for"/>
-		</subrecipes>
-	</recipe>
-metapost macro def
-	<recipe name="metapost.container.function">
-		<start-selector>metafun.storage.definition.begin:capture(itemizer-firstused) + *:capture(name)</start-selector>
-		<end-selector>metafun.storage.definition.end</end-selector>
-		<subrecipes>
-			<include recipe="metapost.container.control.for"/>
-		</subrecipes>
-	</recipe>-->
-	
 	<!--comment-->
 	<recipe name="tex.comment">
 		<class>ESCommentItem</class>
