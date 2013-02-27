@@ -20,6 +20,7 @@ tex.special-Registers + tex + function + tex + by-keyword,
 
 tex.keyword-zone.unit + plus-minus-keyword,
 tex.keyword-zone.skip-keyword + plus-minus-keyword,
+tex.keyword-zone.skip-keyword + tex.keyword-zone + function + plus-minus-keyword,
 tex.keyword-zone.skip-keyword + function + plus-minus-keyword,
 tex.keyword-zone.skip-keyword + function + function + plus-minus-keyword,
 

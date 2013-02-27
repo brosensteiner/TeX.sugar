@@ -6,6 +6,7 @@
     	<include collection="TeXDefine" />
     	<include collection="If_Else" />
     	<include collection="Unit" />
+    	<include collection="Numeric" />
     	<include collection="SpecialKeywordsTeX" />
     	<include collection="TeXKeywords" />
     	<include collection="Escapecharacter" />
@@ -89,24 +90,54 @@
     </zones>
     
     <library>
-    
+    	<!--TODO: find the right/all escape chars-->
     	<collection name="Escapecharacter">
     	    <zone name="tex.escape.character">
-    	        <expression>\\[^0-9a-zA-Z@?!\[\]\(\)]|\\\$</expression>
+    	        <expression>\\([^[:alnum:]@?!\[\]\(\)´°‘*+^=]|\$)</expression>
     	    </zone>
     	</collection>
     
+    	<!--the "tex.command.function.name" zone is actually what ConTeXt MKIV allows in \def´s - plain.tex file looks good with these, so it can´t be that wrong :)-->
     	<collection name="TeXDefine">
     		
     		<zone name="tex.command.function.define">
-    			<expression>(\\(?:g|e|x|count|dimen|muskip|skip|toks)?def)\s*(\\[^\s\{\}\[\]#\\=]*[^\s\{\}\[\]#\\])</expression>
+    			<expression>(\\(?:g|e|x|count|dimen|muskip|skip|toks)?def)\s*((?:\\|\^\^)(\{|\}|#)?[^\s\{\}#%]*(?=\\|\{|#))</expression>
     			<capture number="1" name="tex.command.function.general.def"/>
     			<capture number="2" name="tex.command.function.name"/>
     		</zone>
     		
     		<zone name="tex.command.function.let">
-    		    <expression>\\(?:future)?let\b\s*(\\[^\s\{\}#\\=]*[^\s\{\}#\\])?</expression>
-    		    <capture number="1" name="tex.command.function.name"/>
+    		    <expression>(\\(?:future)?let)([^\s]+)\s*(=(?!=))</expression>
+    		    <capture number="1" name="tex.command.function.general.let"/>
+    		    <capture number="2" name="tex.command.function.name"/>
+    		    <capture number="3" name="punctuation.operator.assignment"/>
+    		</zone>
+    		
+    		<zone name="tex.command.function.let">
+    		    <expression>(\\(?:future)?let)\s*((?:\\|^^)[[:alpha:]^_]+)</expression>
+    		    <capture number="1" name="tex.command.function.general.let"/>
+    		    <capture number="2" name="tex.command.function.name"/>
+    		</zone>
+    		
+    		<zone name="tex.command.function.mathchardef">
+    		    <expression>(\\mathchardef)([^\s]+)\s*(=(?!=))</expression>
+    		    <capture number="1" name="tex.command.function.general.let"/>
+    		    <capture number="2" name="tex.command.function.name"/>
+    		    <capture number="3" name="punctuation.operator.assignment"/>
+    		</zone>
+    		
+    		<zone name="tex.command.function.code">
+    		    <expression>(\\(?:cat|math|del|lc|sf|uc)code)(`)([^\s]+)\s*(=(?!=))</expression>
+    		    <capture number="1" name="tex.command.function.general.let"/>
+    		    <capture number="2" name="operator.punctuation.delimiter.backtick"/>
+    		    <capture number="3" name="tex.command.function.name"/>
+    		    <capture number="4" name="punctuation.operator.assignment"/>
+    		</zone>
+    		
+    		<zone name="tex.command.function.code">
+    		    <expression>(\\(?:cat|math|del|lc|sf|uc)code)(`)</expression>
+    		    <capture number="1" name="tex.command.function.general.let"/>
+    		    <capture number="2" name="operator.punctuation.delimiter.backtick"/>
     		</zone>
     		
     		<zone name="tex.support.variable.define">
@@ -118,7 +149,7 @@
     	<collection name="If_Else">
     		<!--\if* will catch the next command -> maybe there are some environment zones in other sugars defined and this would break them, because of TeX´s complex syntax-->
     		<zone name="tex.keyword.control-zone">
-    		    <expression>(\\if[A-Za-z@!?:_]*)\s*(\\[[:alpha:]_@!?:]*[[:alpha:]_@!?:])?(\b|(?=\d))</expression>
+    		    <expression>(\\if[A-Za-z@!?:_]*)\s*(\\[^\s\{\}#%$]*)</expression>
     		    <capture number="1" name="tex.keyword.control.if"/>
     		    <capture number="2" name="tex.command.support.function.general"/>
     		</zone>
@@ -233,10 +264,34 @@
     		
     	</collection>
     	
+    	<collection name="Numeric">
+    		
+    		<zone name="tex.keyword-zone.numeric.octal">
+    		    <expression>(')((?:\+|-)?[0-7]*(\.)?[0-7]+)</expression>
+    		    <capture number="1" name="tex.punctuation.delimiter.singlequote"/>
+    		    <capture number="2" name="tex.numeric.octal"/>
+    		    <capture number="3" name="tex.punctuation.delimiter.point"/>
+    		</zone>
+    		
+    		<zone name="tex.keyword-zone.numeric.hexadecimal">
+    		    <expression>(")((?:\+|-)?[0-9ABCDEF]*(\.)?[0-9ABCDEF]+)</expression>
+    		    <capture number="1" name="tex.punctuation.delimiter.doublequote"/>
+    		    <capture number="2" name="tex.numeric.hexadecimal"/>
+    		    <capture number="3" name="tex.punctuation.delimiter.point"/>
+    		</zone>
+    		
+    		<zone name="tex.keyword-zone.numeric">
+    		    <expression>((?:\+|-)?\d*(\.)?\d+)</expression>
+    		    <capture number="1" name="tex.numeric"/>
+    		    <capture number="2" name="tex.punctuation.delimiter.point"/>
+    		</zone>
+    	
+    	</collection>
+    	
     	<collection name="Unit">
     	
     		<zone name="tex.keyword-zone.unit">
-    		    <expression>((?:\+|-)?\d*(\.)?\d+)\s*(?:(fil{1,3}\b)|(?:\s*(true)?\s*(mu|cm|mm|in|pt|bp|em|ex|pc|sp|cc|dd)))?</expression>
+    		    <expression>((?:\+|-)?\d*(\.)?\d+)\s*(?:(fil{1,3}\b)|(?:\s*(true)?\s*(mu|cm|mm|in|pt|bp|em|ex|pc|sp|cc|dd)))</expression>
     		    <capture number="1" name="tex.numeric"/>
     		    <capture number="2" name="tex.punctuation.delimiter.point"/>
     		    <capture number="3" name="tex.keyword.other.fillls"/>

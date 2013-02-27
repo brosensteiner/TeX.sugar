@@ -23,7 +23,7 @@
 	    <completions>com.tex.Page</completions>
 	    <completions>com.tex.Inserts</completions>
 	    <completions>com.tex.Kern</completions>
-	    <complete-match capture="1">\\([a-zA-Z\\]*)</complete-match>
+	    <complete-match capture="1">\\([a-zA-Z]*)</complete-match>
 	</provider>
 		
 </codesense> 
