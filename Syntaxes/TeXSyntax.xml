@@ -16,75 +16,75 @@
     	
        	<!--normal tex.command.function.-->
     	<zone name="tex.command.function.Inserts">
-    	    <expression>\\(holdinginserts|insert|insertpenalties|splitbotmark|splitfirstmark|splitmaxdepth|splittopskip|vsplit)(\b|(?=\d))</expression>
+    	    <expression>\\(holdinginserts|(?:insert)?penalties|split(?:(?:bot|first)mark|maxdepth|topskip)|vsplit)(\b|(?=\d))</expression>
     	</zone>
     	
     	<zone name="tex.command.function.Box">
-    	    <expression>\\(badness|box|boxmaxdepth|cleaders|copy|dp|hbadness|hfuzz|ht|leaders|prevdepth|unhcopy|unvcopy|vbadness|vcenter|vfuzz|vtop|wd|xleaders)(\b|(?=\d))</expression>
+    	    <expression>\\(b(?:ox(?:maxdepth)?|adness)|dp|h(?:fuzz|t|badness)|prevdepth|(?:un(?:v|h))?copy|v(center|fuzz|top|badness)|wd|(?:x|c)?leaders)(\b|(?=\d))</expression>
     	</zone>
     	
     	<zone name="tex.command.function.Fonts">
-    	    <expression>\\(fam|font|fontdimen|fontname|nullfont|scriptfont|scriptscriptfont|textfont)(\b|(?=\d))</expression>
+    	    <expression>\\(f(?:am|ont(?:dimen|name)?)|(?:null|script(?:script)?|text)font)(\b|(?=\d))</expression>
     	</zone>
     	
     	<zone name="tex.command.function.Math">
-    	    <expression>\\(above|abovewithdelims|atop|atopwithdelims|delimiterfactor|delimitershortfall|displaylimits|displaystyle|eqno|everydisplay|everymath|left|leqno|limits|mathbin|mathchoice|mathclose|mathinner|mathop|mathopen|mathord|mathpunct|mathrel|nolimits|nonscript|over|overline|overwithdelims|radical|right|scriptscriptstyle|scriptstyle|textstyle|underline)(\b|(?=\d))</expression>
+    	    <expression>\\(a(?:(?:bove|top)(?:withdelims)?)|d(?:elimiter(?:factor|shortfall)|isplay(?:limits|style))|e(?:qno|very(?:display|math))|l(?:eft|eqno|imits)|math(?:bin|c(?:hoice|lose)|inner|o(?:p(?:en)?|rd)|punct|rel)|no(?:limits|nscript)|over(?:line|withdelims)?|r(?:adical|ight)|script(?:script)?style|textstyle|underline)(\b|(?=\d))</expression>
     	</zone>
     	
     	<zone name="tex.command.function.Job">
-    	    <expression>\\(day|deadcycles|dump|end|everyjob|jobname|mag|maxdeadcycles|month|time|year)(\b|(?=\d))</expression>
+    	    <expression>\\(d(?:ay|eadcycles|ump)|e(?:nd|veryjob)|jobname|m(?:a(?:g|xdeadcycles)|onth)|time|year)(\b|(?=\d))</expression>
     	</zone>
     	
     	<zone name="tex.command.function.Tables">
-    	    <expression>\\(cr|crcr|everycr|halign|noalign|omit|span|tabskip|valign)(\b|(?=\d))</expression>
+    	    <expression>\\(cr(?:cr)?|everycr|(?:h|v|no)align|omit|span|tabskip)(\b|(?=\d))</expression>
     	</zone>
     	
     	<zone name="tex.command.function.Debugging">
-    	    <expression>\\(batchmode|errhelp|errmessage|errortex.ines|errorstopmode|meaning|message|nonstopmode|pausing|scrollmode|show|showbox|showboxbreadth|showboxdepth|showlists|showthe|tracingcommands|tracinglostchars|tracingmacros|tracingonline|tracingoutput|tracingpages|tracingparagraphs|tracingrestores|tracingstats)(\b|(?=\d))</expression>
+    	    <expression>\\(batchmode|err(?:help|message)|error(?:contextlines|stopmode)|me(?:aning|ssage)|(?:nonstop|scroll)mode|pausing|show(?:box(?:breadth|depth)?|lists|the)?|tracing(?:commands|lostchars|macros|o(?:nline|utput)|pa(?:ges|ragraphs)|restores|stats))(\b|(?=\d))</expression>
     	</zone>
     	
     	<zone name="tex.command.function.Page">
-    	    <expression>\\(hoffset|maxdepth|pagedepth|pagefilllstretch|pagefillstretch|pagefilstretch|pagegoal|pageshrink|pagestretch|pagetotal|topskip|voffset|vsize)(\b|(?=\d))</expression>
+    	    <expression>\\((?:h|v)offset|maxdepth|page(?:depth|fil{1,3}stretch|goal|s(?:hrink|tretch)|to(?:tal|pskip))|vsize)(\b|(?=\d))</expression>
     	</zone>
     	
     	<zone name="tex.command.function.Paragraph">
-    	    <expression>\\(adjdemerits|baselineskip|displayindent|displaywidth|doublehyphendemerits|emergencystretch|everypar|finalhyphendemerits|hangafter|hangindent|hsize|ignorespaces|indent|leftskip|lineskip|lineskiplimit|looseness|noboundary|noindent|par|parfillskip|parindent|parshape|parskip|predisplaysize|pretolerance|prevgraf|rightskip|spacefactor|spaceskip|tolerance|vadjust|xspaceskip)(\b|(?=\d))</expression>
+    	    <expression>\\((?:adj|(?:final|double)hyphen)demerits|(?:(?:baselin|x?spac)e|(?:righ|lef)t)skip|display(?:indent|width)|e(?:mergencystretch|verypar)|h(?:ang(?:after|indent)|size)|i(?:gnorespaces|ndent)|l(?:ine(?:skip|skiplimit)|ooseness)|no(?:boundary|indent)|p(?:ar(?:fillskip|indent|s(?:hape|kip))?|re(?:(?:displaysiz|toleranc)e|vgraf))|tolerance|spacefactor|vadjust)(\b|(?=\d))</expression>
     	</zone>
     	
     	<zone name="tex.command.function.Hyphenation">
-    	    <expression>\\((?&lt;!-)-(?!-)|defaulthyphenchar|discretionary|hyphenation|hyphenchar|language|lefthyphenmin|patterns|righthyphenmin|setlanguage|uchyph)(\b|(?=\d))</expression>
+    	    <expression>\\((?&lt;!-)-(?!-)|(?:default)?hyphen(?:char|ation)|discretionary|language|(?:left|right)hyphenmin|patterns|setlanguage|uchyph)(\b|(?=\d))</expression>
     	</zone>
     	
     	<zone name="tex.command.function.Kern">
-    	    <expression>\\(lastkern|lower|mathsurround|mkern|moveleft|moveright|nulldelimiterspace|raise|scriptspace|unkern|kern)(\b|(?=\d))</expression>
+    	    <expression>\\((?:last|un|m)?kern|lower|m(?:athsurround|ove(?:left|right))|nulldelimiterspace|raise|scriptspace)(\b|(?=\d))</expression>
     	</zone>
     	
     	<zone name="tex.command.function.Macro">
-    	    <expression>\\(afterassignment|aftergroup|begingroup|csname|endcsname|endgroup|expandafter|global|globaldefs|long|noexpand|outer|relax|the|def|xdef|gdef|edef)(\b|(?=\d))</expression>
+    	    <expression>\\(after(?:assignment|group)|begingroup|e(?:nd(?:csname|group)|xpandafter)|csname|(?:global)?defs|long|noexpand|outer|relax|the|(?:x|g|e)?def)(\b|(?=\d))</expression>
     	</zone>
     	
     	<zone name="tex.command.function.Character">
-    	    <expression>\\(accent|catcode|char|chardef|defaultskewchar|delcode|delimiter|endlinechar|escapechar|lccode|lowercase|mathaccent|mathchar|mathchardef|mathcode|newlinechar|number|romannumeral|sfcode|skewchar|string|uccode|uppercase)(\b|(?=\d))</expression>
+    	    <expression>\\(accent|(?:cat|del|sf|uc|lc)code|(?:char)?def|(?:defaultskew|skew|e(?:ndline|scape)|newline)char|delimiter|(?:lower|upper)case|math(?:accent|(?:char)?def|code)|number|romannumeral|string)(\b|(?=\d))</expression>
     	</zone>
     	
     	<zone name="tex.command.function.Glue">
-    	    <expression>\\(abovedisplayshortskip|abovedisplayskip|belowdisplayshortskip|belowdisplayskip|hfil|hfill|hfilneg|hskip|hss|lastskip|medmuskip|mskip|thickmuskip|thinmuskip|unskip|vfil|vfill|vfilneg|vskip|vss)(\b|(?=\d))</expression>
+    	    <expression>\\((?:above|below)display(?:short)?skip|(?:(?:h|v)(?:fi(?:l{1,2}|lneg)|s(?:kip|s)))|(?:last|m(?:edmu)?|(?:thi(?:ck|n))?mu|un)skip)(\b|(?=\d))</expression>
     	</zone>
     	
     	<zone name="tex.command.function.Penalties">
-    	    <expression>\\(binoppenalty|displaywidowpenalty|postdisplaypenalty|predisplaypenalty|relpenalty|widowpenalty|brokenpenalty|clubpenalty|exhyphenpenalty|floatingpenalty|hyphenpenalty|interlinepenalty|linepenalty|lastpenalty|outputpenalty|penalty|unpenalty)(\b|(?=\d))</expression>
+    	    <expression>\\((?:b(?:inop|roken)|(?:display)?widow|p(?:(?:ost|re)display)|rel|club|ex(?:hyphen)?|floating|inter(?:line)?|last|output|un|hyphen|line)?penalty)(\b|(?=\d))</expression>
     	</zone>
     	
     	<zone name="tex.command.function.Logic">
-    	    <expression>\\(else|fi|if|ifcase|ifcat|ifdim|ifeof|iffalse|ifhbox|ifhmode|ifinner|ifmmode|ifnum|ifodd|iftrue|ifvbox|ifvmode|ifvoid|ifx|or)(\b|(?=\d))</expression>
+    	    <expression>\\(if(?:ca(?:se|t)|dim|eof|false|h(?:box|mode)|inner|mmode|num|odd|true|v(?:box|mode|oid)|x)?|else|fi|or)(\b|(?=\d))</expression>
     	</zone>
     	
     	<zone name="tex.command.function.Marks">
-    	    <expression>\\(botmark|firstmark|mark|topmark)(\b|(?=\d))</expression>
+    	    <expression>\\((?:bot|first|top)?mark)(\b|(?=\d))</expression>
     	</zone>
     	
     	<zone name="tex.command.function.FileIO">
-    	    <expression>\\(closein|closeout|endinput|immediate|input|inputlineno|openin|openout|output|read|shipout|special|write)(\b|(?=\d))</expression>
+    	    <expression>\\(close(?:in|out)|endinput|immediate|(?:input)?lineno|open(?:in|out)|output|read|s(?:hipout|pecial)|write)(\b|(?=\d))</expression>
     	</zone>
 
     </zones>
@@ -101,7 +101,7 @@
     	<collection name="TeXDefine">
     		
     		<zone name="tex.command.function.define">
-    			<expression>(\\(?:g|e|x|count|dimen|muskip|skip|toks)?def)\s*((?:\\|\^\^)(\{|\}|#)?[^\s\{\}#%]*(?=\\|\{|#))</expression>
+    			<expression>(\\(?:g|e|x|count|dimen|(?:mu)?skip|toks)?def)\s*((?:\\|\^\^)(\{|\}|#)?[^\s\{\}#%]*(?=\\|\{|#))</expression>
     			<capture number="1" name="tex.command.function.general.def"/>
     			<capture number="2" name="tex.command.function.name"/>
     		</zone>
@@ -183,7 +183,7 @@
     		</zone>
     		
     		<zone name="tex.keyword-zone.to-spread-keyword">
-    		    <expression>(?:to|spread)\s*(?:((?:\+|-)?\d*(\.)?\d+)\s*(?:(fil{1,3})|(?:\s*(true)?\s*(mu|cm|mm|in|pt|bp|em|ex|pc|sp|cc|dd)))(\b|(?=\d)))?</expression>
+    		    <expression>(?:to|spread)\s*(?:((?:\+|-)?\d*(\.)?\d+)\s*(?:(fil{1,3})|(?:\s*(true)?\s*(m(?:u|m)|c(?:m|c)|in|pt|bp|e(?:m|x)|pc|sp|dd)))(\b|(?=\d)))?</expression>
     		    <capture number="1" name="tex.numeric"/>
     		    <capture number="2" name="tex.punctuation.delimiter.point"/>
     		    <capture number="3" name="tex.keyword-zone.other.fillls"/>
@@ -192,7 +192,7 @@
     		</zone>
 
     		<zone name="tex.keyword-zone.skip-keyword">
-    		    <expression>(\\[A-Za-z_@!?:]*(?&lt;!un)(?:skip|size)[A-Za-z_@!?:]*)\s*(?:((?:\+|-)?\d*(\.)?\d+)\s*(?:(fil{1,3})|(?:\s*(true)?\s*(mu|cm|mm|in|pt|bp|em|ex|pc|sp|cc|dd)))(\b|(?=\d)))?</expression>
+    		    <expression>(\\[\w@!?:]*(?&lt;!un)(?:s(?:kip|ize))[\w@!?:]*)\s*(?:((?:\+|-)?\d*(\.)?\d+)\s*(?:(fil{1,3})|(?:\s*(true)?\s*(m(?:u|m)|c(?:m|c)|in|pt|bp|e(?:m|x)|pc|sp|dd)))(\b|(?=\d)))?</expression>
     		    <capture number="1" name="tex.command.function.general"/>
     		    <capture number="2" name="tex.numeric"/>
     		    <capture number="3" name="tex.punctuation.delimiter.point"/>
@@ -202,12 +202,12 @@
     		</zone>
     		
     		<zone name="tex.keyword-zone.plus-minus-keyword">
-    		    <expression>(\b|(?&lt;=\d))(minus|plus)(\b|(?=\d))</expression>
+    		    <expression>(\b|(?&lt;=\d))((?:min|pl)us)(\b|(?=\d))</expression>
     		</zone>
     		
     		<!--"(?:\s*(?!=)", because could interfere with ConTeXt keys "width" and "height"-->
     		<zone name="tex.keyword-zone.depth-width-height-keyword">
-    			<expression>(?:\b|(?&lt;=\d))(?:depth|width|height)\s*(?:((?:\+|-)?\d*(\.)?\d+)\s*(?:(fil{1,3})|(?:\s*(true)?\s*(mu|cm|mm|in|pt|bp|em|ex|pc|sp|cc|dd)))(\b|(?=\d)))?</expression>
+    			<expression>(?:\b|(?&lt;=\d))(?:(?:dep|wid)th|height)\s*(?:((?:\+|-)?\d*(\.)?\d+)\s*(?:(fil{1,3})|(?:\s*(true)?\s*(m(?:u|m)|c(?:m|c)|in|pt|bp|e(?:m|x)|pc|sp|dd)))(\b|(?=\d)))?</expression>
     			<capture number="1" name="tex.numeric"/>
     			<capture number="2" name="tex.punctuation.delimiter.point"/>
     			<capture number="3" name="tex.keyword.other.fillls"/>
@@ -274,7 +274,7 @@
     		</zone>
     		
     		<zone name="tex.keyword-zone.numeric.hexadecimal">
-    		    <expression>(")((?:\+|-)?[0-9ABCDEF]*(\.)?[0-9ABCDEF]+)</expression>
+    		    <expression>(")((?:\+|-)?[0-9A-F]*(\.)?[0-9A-F]+)</expression>
     		    <capture number="1" name="tex.punctuation.delimiter.doublequote"/>
     		    <capture number="2" name="tex.numeric.hexadecimal"/>
     		    <capture number="3" name="tex.punctuation.delimiter.point"/>
@@ -291,7 +291,7 @@
     	<collection name="Unit">
     	
     		<zone name="tex.keyword-zone.unit">
-    		    <expression>((?:\+|-)?\d*(\.)?\d+)\s*(?:(fil{1,3}\b)|(?:\s*(true)?\s*(mu|cm|mm|in|pt|bp|em|ex|pc|sp|cc|dd)))</expression>
+    		    <expression>((?:\+|-)?\d*(\.)?\d+)\s*(?:(fil{1,3}\b)|(?:\s*(true)?\s*(m(?:u|m)|c(?:m|c)|in|pt|bp|e(?:m|x)|pc|sp|dd)))</expression>
     		    <capture number="1" name="tex.numeric"/>
     		    <capture number="2" name="tex.punctuation.delimiter.point"/>
     		    <capture number="3" name="tex.keyword.other.fillls"/>
