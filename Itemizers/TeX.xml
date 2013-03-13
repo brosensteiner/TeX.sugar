@@ -16,7 +16,7 @@
 	
 	<!--define/def...-->	
 	<recipe name="tex.container.function">
-		<selector>tex.comamnd.function.define > name:capture(name)</selector>
+		<selector>tex.command.function.define > name:capture(name)</selector>
 	</recipe>
 	
 </itemizer>

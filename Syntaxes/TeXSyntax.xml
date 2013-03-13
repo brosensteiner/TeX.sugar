@@ -48,11 +48,11 @@
     	</zone>
     	
     	<zone name="tex.command.function.Paragraph">
-    	    <expression>\\((?:adj|(?:final|double)hyphen)demerits|(?:(?:baselin|x?spac)e|(?:righ|lef)t)skip|display(?:indent|width)|e(?:mergencystretch|verypar)|h(?:ang(?:after|indent)|size)|i(?:gnorespaces|ndent)|l(?:ine(?:skip|skiplimit)|ooseness)|no(?:boundary|indent)|p(?:ar(?:fillskip|indent|s(?:hape|kip))?|re(?:(?:displaysiz|toleranc)e|vgraf))|tolerance|spacefactor|vadjust)(\b|(?=\d))</expression>
+    	    <expression>\\((?:adj|(?:final|double)hyphen)demerits|(?:(?:baselin|x?spac)e|(?:righ|lef)t)skip|display(?:indent|width)|e(?:mergencystretch|verypar)|h(?:ang(?:after|indent)|size)|i(?:gnorespaces|ndent)|l(?:ine(?:skip(?:limit)?)|ooseness)|no(?:boundary|indent)|p(?:ar(?:fillskip|indent|s(?:hape|kip))?|re(?:(?:displaysiz|toleranc)e|vgraf))|tolerance|spacefactor|vadjust)(\b|(?=\d))</expression>
     	</zone>
     	
     	<zone name="tex.command.function.Hyphenation">
-    	    <expression>\\((?&lt;!-)-(?!-)|(?:default)?hyphen(?:char|ation)|discretionary|language|(?:left|right)hyphenmin|patterns|setlanguage|uchyph)(\b|(?=\d))</expression>
+    	    <expression>\\((?&lt;!-)-(?!-)|hyphen(?:char|ation)|d(?:efaulthyphenchar|iscretionary)|language|(?:left|right)hyphenmin|patterns|setlanguage|uchyph)(\b|(?=\d))</expression>
     	</zone>
     	
     	<zone name="tex.command.function.Kern">
@@ -60,11 +60,15 @@
     	</zone>
     	
     	<zone name="tex.command.function.Macro">
-    	    <expression>\\(after(?:assignment|group)|begingroup|e(?:nd(?:csname|group)|xpandafter)|csname|(?:global)?defs|long|noexpand|outer|relax|the|(?:x|g|e)?def)(\b|(?=\d))</expression>
+    	    <expression>\\(after(?:assignment|group)|begingroup|e(?:nd(?:csname|group)|xpandafter)|(?:csnam|th)e|(?:global)?defs|long|noexpand|outer|relax|(?:x|g|e)?def)(\b|(?=\d))</expression>
+    	</zone>
+    	<!--\advance, \multiply, \devide are special (see special zone)-->
+    	<zone name="tex.command.function.Registers">
+    	    <expression>\\((?:count|dimen|skip|toks)(?:def)?)(\b|(?=\d))</expression>
     	</zone>
     	
     	<zone name="tex.command.function.Character">
-    	    <expression>\\(accent|(?:cat|del|sf|uc|lc)code|(?:char)?def|(?:defaultskew|skew|e(?:ndline|scape)|newline)char|delimiter|(?:lower|upper)case|math(?:accent|(?:char)?def|code)|number|romannumeral|string)(\b|(?=\d))</expression>
+    	    <expression>\\(accent|(?:cat|del|sf|(?:u|l)c)code|(?:char)?def|(?:(?:default)?skew|e(?:ndline|scape)|newline)char|delimiter|(?:low|upp)ercase|math(?:accent|(?:char)?def|code)|number|romannumeral|string)(\b|(?=\d))</expression>
     	</zone>
     	
     	<zone name="tex.command.function.Glue">
@@ -75,7 +79,7 @@
     	    <expression>\\((?:b(?:inop|roken)|(?:display)?widow|p(?:(?:ost|re)display)|rel|club|ex(?:hyphen)?|floating|inter(?:line)?|last|output|un|hyphen|line)?penalty)(\b|(?=\d))</expression>
     	</zone>
     	
-    	<zone name="tex.command.function.Logic">
+    	<zone name="tex.command.function.keyword.control.Logic">
     	    <expression>\\(if(?:ca(?:se|t)|dim|eof|false|h(?:box|mode)|inner|mmode|num|odd|true|v(?:box|mode|oid)|x)?|else|fi|or)(\b|(?=\d))</expression>
     	</zone>
     	
@@ -101,9 +105,23 @@
     	<collection name="TeXDefine">
     		
     		<zone name="tex.command.function.define">
-    			<expression>(\\(?:g|e|x|count|dimen|(?:mu)?skip|toks)?def)\s*((?:\\|\^\^)(\{|\}|#)?[^\s\{\}#%]*(?=\\|\{|#))</expression>
+    			<expression>(\\(?:g|e|x|count|dimen|(?:mu)?skip|toks)?def)\s*((?:\\|\^\^)(\{|\}|#)?[^\s\{\}#%]*\s*(?=\\|\{|#))</expression>
     			<capture number="1" name="tex.command.function.general.def"/>
     			<capture number="2" name="tex.command.function.name"/>
+    		</zone>
+    		
+    		<zone name="tex.command.function.Registers">
+    		    <expression>\\((?:count|dimen|skip|toks)(?:def))([^\s]+)\s*(=(?!=))</expression>
+    		    <capture number="1" name="tex.command.function.general.def"/>
+    		    <capture number="2" name="tex.command.function.name"/>
+    		    <capture number="3" name="punctuation.operator.assignment"/>
+    		</zone>
+    		
+    		<zone name="tex.command.function.Character">
+    		    <expression>\\((?:mathchar|char)def)([^\s]+)\s*(=(?!=))</expression>
+    		    <capture number="1" name="tex.command.function.general.chardef"/>
+    		    <capture number="2" name="tex.command.function.name"/>
+    		    <capture number="3" name="punctuation.operator.assignment"/>
     		</zone>
     		
     		<zone name="tex.command.function.let">
@@ -119,29 +137,16 @@
     		    <capture number="2" name="tex.command.function.name"/>
     		</zone>
     		
-    		<zone name="tex.command.function.mathchardef">
-    		    <expression>(\\mathchardef)([^\s]+)\s*(=(?!=))</expression>
-    		    <capture number="1" name="tex.command.function.general.let"/>
-    		    <capture number="2" name="tex.command.function.name"/>
-    		    <capture number="3" name="punctuation.operator.assignment"/>
-    		</zone>
-    		
     		<zone name="tex.command.function.code">
-    		    <expression>(\\(?:cat|math|del|lc|sf|uc)code)(`)([^\s]+)\s*(=(?!=))</expression>
+    		    <expression>(\\(?:cat|math|del|sf|(?:l|u)c)code)(`)(?:([^\s]+)\s*(=(?!=)))?</expression>
     		    <capture number="1" name="tex.command.function.general.let"/>
     		    <capture number="2" name="operator.punctuation.delimiter.backtick"/>
     		    <capture number="3" name="tex.command.function.name"/>
     		    <capture number="4" name="punctuation.operator.assignment"/>
     		</zone>
     		
-    		<zone name="tex.command.function.code">
-    		    <expression>(\\(?:cat|math|del|lc|sf|uc)code)(`)</expression>
-    		    <capture number="1" name="tex.command.function.general.let"/>
-    		    <capture number="2" name="operator.punctuation.delimiter.backtick"/>
-    		</zone>
-    		
     		<zone name="tex.support.variable.define">
-    		    <expression>\#{1,9}[1-9]</expression>
+    		    <expression>#{1,9}[1-9]</expression>
     		</zone>
     	
     	</collection>
@@ -149,7 +154,7 @@
     	<collection name="If_Else">
     		<!--\if* will catch the next command -> maybe there are some environment zones in other sugars defined and this would break them, because of TeX´s complex syntax-->
     		<zone name="tex.keyword.control-zone">
-    		    <expression>(\\if[A-Za-z@!?:_]*)\s*(\\[^\s\{\}#%$]*)</expression>
+    		    <expression>(\\if(?:[A-Za-z_@!?:]*)?)\s*(\\[^\s\{\}#%$]*)</expression>
     		    <capture number="1" name="tex.keyword.control.if"/>
     		    <capture number="2" name="tex.command.support.function.general"/>
     		</zone>
@@ -171,19 +176,19 @@
     	<collection name="SpecialKeywordsTeX">
     		<!--these commands should be as general as possible, but on the other side as restrictive as possible for better .css highlighting. Anyway, it is always a trade-off-->
     		<zone name="tex.command.function.Registers.special-Registers">
-    		    <expression>\\(advance|divide|multiply)(\b|(?=\d))</expression>
+    		    <expression>\\((?:advanc|divid)e|multiply)(\b|(?=\d))</expression>
     		</zone>
     		
     		<zone name="tex.command.function.Box.special-box">
-    		    <expression>\\\w*box(\b|(?=\d))</expression>
+    		    <expression>\\(?!if)(?:[a-zA-Z_]*box|halign)(\b|(?=\d))</expression>
     		</zone>
     		
     		<zone name="tex.command.function.Box.special-rule">
-    			<expression>\\\w*rule(\b|(?=\d))</expression>
+    			<expression>\\(?!if)[a-zA-Z_]*rule(\b|(?=\d))</expression>
     		</zone>
     		
     		<zone name="tex.keyword-zone.to-spread-keyword">
-    		    <expression>(?:to|spread)\s*(?:((?:\+|-)?\d*(\.)?\d+)\s*(?:(fil{1,3})|(?:\s*(true)?\s*(m(?:u|m)|c(?:m|c)|in|pt|bp|e(?:m|x)|pc|sp|dd)))(\b|(?=\d)))?</expression>
+    		    <expression>(?:to|spread)\s*(?:((?:\+|-)?\d*(\.)?\d+)\s*(?:(fil{1,3})|(?:\s*(true)?\s*(m(?:u|m)|c(?:m|c)|in|p(?:t|c)|(?:b|s)p|e(?:m|x)|dd)))(\b|(?=\d)))?</expression>
     		    <capture number="1" name="tex.numeric"/>
     		    <capture number="2" name="tex.punctuation.delimiter.point"/>
     		    <capture number="3" name="tex.keyword-zone.other.fillls"/>
@@ -192,7 +197,7 @@
     		</zone>
 
     		<zone name="tex.keyword-zone.skip-keyword">
-    		    <expression>(\\[\w@!?:]*(?&lt;!un)(?:s(?:kip|ize))[\w@!?:]*)\s*(?:((?:\+|-)?\d*(\.)?\d+)\s*(?:(fil{1,3})|(?:\s*(true)?\s*(m(?:u|m)|c(?:m|c)|in|pt|bp|e(?:m|x)|pc|sp|dd)))(\b|(?=\d)))?</expression>
+    		    <expression>(\\[a-zA-Z_@!?:]*(?&lt;!un)(?:s(?:kip|ize)))\s*(?:((?:\+|-)?\d*(\.)?\d+)\s*(?:(fil{1,3})|(?:\s*(true)?\s*(m(?:u|m)|c(?:m|c)|in|p(?:t|c)|(?:b|s)p|e(?:m|x)|dd))))?(\b|(?=\d))</expression>
     		    <capture number="1" name="tex.command.function.general"/>
     		    <capture number="2" name="tex.numeric"/>
     		    <capture number="3" name="tex.punctuation.delimiter.point"/>
@@ -207,7 +212,7 @@
     		
     		<!--"(?:\s*(?!=)", because could interfere with ConTeXt keys "width" and "height"-->
     		<zone name="tex.keyword-zone.depth-width-height-keyword">
-    			<expression>(?:\b|(?&lt;=\d))(?:(?:dep|wid)th|height)\s*(?:((?:\+|-)?\d*(\.)?\d+)\s*(?:(fil{1,3})|(?:\s*(true)?\s*(m(?:u|m)|c(?:m|c)|in|pt|bp|e(?:m|x)|pc|sp|dd)))(\b|(?=\d)))?</expression>
+    			<expression>(?:\b|(?&lt;=\d))(?:(?:dep|wid)th|height)\s*(?:((?:\+|-)?\d*(\.)?\d+)\s*(?:(fil{1,3})|(?:\s*(true)?\s*(m(?:u|m)|c(?:m|c)|in|p(?:t|c)|(?:b|s)p|e(?:m|x)|dd)))(\b|(?=\d)))?</expression>
     			<capture number="1" name="tex.numeric"/>
     			<capture number="2" name="tex.punctuation.delimiter.point"/>
     			<capture number="3" name="tex.keyword.other.fillls"/>
@@ -237,10 +242,10 @@
     	        
     	<collection name="Group">
     	    <zone name="tex.command.begingroup.begin.level0">
-    	        <expression>(\\(begin|b)group)(\b|(?=\d))</expression>
+    	        <expression>(\\b(?:egin)?group)(\b|(?=\d))</expression>
     	    </zone>
     	    <zone name="tex.command.endgroup.end.level0">
-    	        <expression>(\\(end|e)group)(\b|(?=\d))</expression>
+    	        <expression>(\\e(?:nd)group)(\b|(?=\d))</expression>
     	    </zone>
     	</collection>
     	
@@ -291,7 +296,7 @@
     	<collection name="Unit">
     	
     		<zone name="tex.keyword-zone.unit">
-    		    <expression>((?:\+|-)?\d*(\.)?\d+)\s*(?:(fil{1,3}\b)|(?:\s*(true)?\s*(m(?:u|m)|c(?:m|c)|in|pt|bp|e(?:m|x)|pc|sp|dd)))</expression>
+    		    <expression>((?:\+|-)?\d*(\.)?\d+)\s*(?:(fil{1,3}\b)|(?:\s*(true)?\s*(m(?:u|m)|c(?:m|c)|in|p(?:t|c)|(?:b|s)p|e(?:m|x)|dd)))</expression>
     		    <capture number="1" name="tex.numeric"/>
     		    <capture number="2" name="tex.punctuation.delimiter.point"/>
     		    <capture number="3" name="tex.keyword.other.fillls"/>
