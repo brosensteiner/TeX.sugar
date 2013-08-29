@@ -105,7 +105,7 @@
     	<collection name="TeXDefine">
     		
     		<zone name="tex.command.function.define">
-    			<expression>(\\(?:g|e|x|count|dimen|(?:mu)?skip|toks)?def)\s*((?:\\|\^\^)(\{|\}|#)?[^\s\{\}#%]*\s*(?=\\|\{|#))</expression>
+    			<expression>(\\(?:g|e|x|count|dimen|(?:mu)?skip|toks)?def)\s*((?:\\|\^\^)(\{|\}|#)?[^\s\{\}#%]*)</expression>
     			<capture number="1" name="tex.command.function.general.def"/>
     			<capture number="2" name="tex.command.function.name"/>
     		</zone>
@@ -123,9 +123,9 @@
     		    <capture number="2" name="tex.command.function.name"/>
     		    <capture number="3" name="punctuation.operator.assignment"/>
     		</zone>
-    		
+    		<!--exceptions: \[, make problesm in ConTeXt (key=value pairs in \lettrine command), but think are not allowed in real TeX anyway-->
     		<zone name="tex.command.function.let">
-    		    <expression>(\\(?:future)?let)([^\s]+)\s*(=(?!=))</expression>
+    		    <expression>(\\(?:future)?let)([^\s\[]+)\s*(=(?!=))</expression>
     		    <capture number="1" name="tex.command.function.general.let"/>
     		    <capture number="2" name="tex.command.function.name"/>
     		    <capture number="3" name="punctuation.operator.assignment"/>
@@ -152,11 +152,9 @@
     	</collection>
     	
     	<collection name="If_Else">
-    		<!--\if* will catch the next command -> maybe there are some environment zones in other sugars defined and this would break them, because of TeX´s complex syntax-->
     		<zone name="tex.keyword.control-zone">
-    		    <expression>(\\if(?:[A-Za-z_@!?:]*)?)\s*(\\[^\s\{\}#%$]*)</expression>
+    		    <expression>(\\if(?:[A-Za-z_@!?:]*)?)</expression>
     		    <capture number="1" name="tex.keyword.control.if"/>
-    		    <capture number="2" name="tex.command.support.function.general"/>
     		</zone>
     		
     		<zone name="tex.keyword.control.else">
@@ -174,7 +172,7 @@
     	</collection>
     	
     	<collection name="SpecialKeywordsTeX">
-    		<!--these commands should be as general as possible, but on the other side as restrictive as possible for better .css highlighting. Anyway, it is always a trade-off-->
+    		<!--these commands should be as general as possible, but on the other side as restrictive as possible for better syntax highlighting. Anyway, it is always a trade-off-->
     		<zone name="tex.command.function.Registers.special-Registers">
     		    <expression>\\((?:advanc|divid)e|multiply)(\b|(?=\d))</expression>
     		</zone>
@@ -245,7 +243,7 @@
     	        <expression>(\\b(?:egin)?group)(\b|(?=\d))</expression>
     	    </zone>
     	    <zone name="tex.command.endgroup.end.level0">
-    	        <expression>(\\e(?:nd)group)(\b|(?=\d))</expression>
+    	        <expression>(\\e(?:nd)?group)(\b|(?=\d))</expression>
     	    </zone>
     	</collection>
     	
