@@ -249,6 +249,9 @@
     	
     	<collection name="TeXKeywords">
     		
+    		<zone name="tex.keyword.other.spacefactorcodes">
+    		    <expression>\\\?(?!\?)|\\!(?!!)|\\\.|\\,|\\:|\\;</expression>
+    		</zone>
     		<zone name="tex.keyword.tab">
     			<expression>&amp;</expression>
     		</zone>
