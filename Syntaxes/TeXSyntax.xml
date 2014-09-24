@@ -208,7 +208,6 @@
     		    <expression>(\b|(?&lt;=\d))((?:min|pl)us)(\b|(?=\d))</expression>
     		</zone>
     		
-    		<!--"(?:\s*(?!=)", because could interfere with ConTeXt keys "width" and "height"-->
     		<zone name="tex.keyword-zone.depth-width-height-keyword">
     			<expression>(?:\b|(?&lt;=\d))(?:(?:dep|wid)th|height)\s*(?:((?:\+|-)?\d*(\.)?\d+)\s*(?:(fil{1,3})|(?:\s*(true)?\s*(m(?:u|m)|c(?:m|c)|in|p(?:t|c)|(?:b|s)p|e(?:m|x)|dd)))(\b|(?=\d)))?</expression>
     			<capture number="1" name="tex.numeric"/>

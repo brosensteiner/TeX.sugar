@@ -43,5 +43,5 @@ tex.special-rule + depth-width-height-keyword + function + depth-width-height-ke
 tex.special-rule + depth-width-height-keyword + function + function + depth-width-height-keyword + depth-width-height-keyword,
 
 tex.special-box + keyword-zone.to-spread-keyword {
-	color: hsl(84, 64%, 56%);
+	color: #859900;
 }
